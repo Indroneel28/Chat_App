@@ -15,10 +15,10 @@ config({
 
 //Configuring cors
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+  origin: process.env.FRONTEND_URL,
+  credentials: true
 }));
+
 
 //Middlewares
 app.use(cookieParser());
@@ -26,11 +26,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(fileUpload({
-    useTempFiles: true,
+    useTempFiles: true, 
     tempFileDir: './temp/'
 }));
 
-app.use('api/v1/user', userRouter);
+app.use('/api/v1/user', userRouter);
 
 dbConnection();
 
